@@ -62,4 +62,13 @@ public class Computer {
     public int findNumberOfCreatedComputers(){
         return count;
     }
+
+    // checking equality between two Computer objects
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Computer computer = (Computer) o;
+        return Double.compare(price, computer.price) == 0 && brand.equals(computer.brand) && model.equals(computer.model);
+    }
 }
