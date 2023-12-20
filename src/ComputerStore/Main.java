@@ -45,7 +45,7 @@ public class Main {
                     computerStore.enterNewComputers();
                     break;
                 case 2:
-                    System.out.println("choice 2");
+                    computerStore.modifyComputerInfo();
                     break;
                 case 3:
                     System.out.println("choice 3");
@@ -55,6 +55,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("=== Quitting Chen's Computer Store ===");
+                    kb.close();
                     System.exit(0);
             }
         }
