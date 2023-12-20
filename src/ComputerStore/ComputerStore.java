@@ -94,7 +94,7 @@ public class ComputerStore {
                 \t1.\tBrand
                 \t2.\tModel
                 \t3.\tPrice
-                \t4.\tQuit
+                \t4.\tBack to menu
                 Enter your choice:\s""");
             int choice = 0;
             try {
@@ -190,7 +190,7 @@ public class ComputerStore {
     public void displayByPrice(double price){
         System.out.println("Displaying all computers in the inventory under the following price: " + price);
         for (Computer c : inventory){
-            if (c.getPrice() == price) System.out.println(c);
+            if (c.getPrice() <= price) System.out.println(c);
         }
     }
 }

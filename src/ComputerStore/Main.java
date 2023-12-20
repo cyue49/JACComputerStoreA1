@@ -7,15 +7,16 @@ public class Main {
         Scanner kb = new Scanner(System.in);
 
         // get max number of computers that can be stored in the computer store from user
-        System.out.println("=== Welcome to Chen's Computer Store ===\nEnter the maximum number of computers the computer store can contain: ");
+        System.out.println("=== Welcome to Chen's Computer Store ===");
         int storeSize;
         while (true){
+            System.out.println("Enter the maximum number of computers the computer store can contain: ");
             try{
                 String input = kb.nextLine();
                 storeSize = Integer.parseInt(input);
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input. Please try again: ");
+                System.out.println("Invalid input. Please try again.");
             }
         }
 
@@ -48,10 +49,23 @@ public class Main {
                     computerStore.modifyComputerInfo();
                     break;
                 case 3:
-                    System.out.println("choice 3");
+                    System.out.println("Please enter a brand name: ");
+                    String brand = kb.nextLine();
+                    computerStore.displayByBrand(brand);
                     break;
                 case 4:
-                    System.out.println("choice 4");
+                    double price;
+                    while (true){
+                        System.out.println("Please enter a price value: ");
+                        try{
+                            String input = kb.nextLine();
+                            price = Double.parseDouble(input);
+                            break;
+                        }catch (Exception e){
+                            System.out.println("Invalid input. Please try again.");
+                        }
+                    }
+                    computerStore.displayByPrice(price);
                     break;
                 case 5:
                     System.out.println("=== Quitting Chen's Computer Store ===");
