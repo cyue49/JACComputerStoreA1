@@ -19,7 +19,7 @@ public class ComputerStore {
     // ask user to enter password and check if correct
     private static boolean checkPassword(){
         Scanner kb = new Scanner(System.in);
-        int tries = 3;
+        int tries = 3; // have 3 tries to enter the correct password
         while (tries>0){
             System.out.println("Please enter the password: ");
             String pwd = kb.nextLine();
@@ -30,7 +30,7 @@ public class ComputerStore {
                 System.out.println("Incorrect password attempt #" + (3-tries));
             }
         }
-        System.out.println("You have entered the wrong password 3 attempts in a row. Returning back to main menu.");
+        System.out.println("You have entered the wrong password 3 attempts in a row. Returning back to main menu."); // used up all 3 tries, back to main menu
         return false;
     }
 
@@ -50,7 +50,7 @@ public class ComputerStore {
                 System.out.println("Please input the number of computers you want to add: ");
                 String input = kb.nextLine();
                 num = Integer.parseInt(input);
-                if (num > emptySlots){ // if not enough empty slots to add the number of computers the user wants to add
+                if (num > emptySlots){ // if not enough empty slots to add the number of computers the user wants to add, return back to main menu
                     System.out.println("Action cannot be performed. There is only " + emptySlots + " empty slots available in the computer store. \nReturning to main menu.");
                     return;
                 }
@@ -78,7 +78,7 @@ public class ComputerStore {
                     System.out.println("Invalid input. Please try again: ");
                 }
             }
-            addNewComputers(new Computer(brand,model,price));
+            addNewComputers(new Computer(brand,model,price)); // add new computer to store
         }
 
         System.out.println(num + " computer(s) have been added to the store.");
@@ -87,8 +87,8 @@ public class ComputerStore {
     // change the information of an existing computer
     private void changeComputerInfo(Computer c){
         Scanner kb = new Scanner(System.in);
-        System.out.println("Here is the current information of the computer: \n" + c);
-        while (true){
+        System.out.println("Here is the current information of the computer: \n" + c); // display current information of computer
+        while (true){ // ask user which information they want to change
             System.out.println("""
                 What information would you like to change?
                 \t1.\tBrand
@@ -105,19 +105,19 @@ public class ComputerStore {
                 continue;
             }
             switch (choice) {
-                case 1:
+                case 1: // change brand
                     System.out.println("Please enter the new brand: ");
                     String newBrand = kb.nextLine();
                     c.setBrand(newBrand);
                     System.out.println("The brand of the computer has been changed. Here is the updated information for the computer: \n" + c);
                     break;
-                case 2:
+                case 2: // change model
                     System.out.println("Please enter the new model: ");
                     String newModel = kb.nextLine();
                     c.setModel(newModel);
                     System.out.println("The model of the computer has been changed. Here is the updated information for the computer: \n" + c);
                     break;
-                case 3:
+                case 3: // change price
                     double price = 0;
                     while (true){
                         System.out.println("Please enter the new price: ");
@@ -132,7 +132,7 @@ public class ComputerStore {
                     c.setPrice(price);
                     System.out.println("The price of the computer has been changed. Here is the updated information for the computer: \n" + c);
                     break;
-                case 4:
+                case 4: // back to menu
                     return;
             }
         }
