@@ -6,6 +6,7 @@ public class Computer {
     private double price; // price of the computer
     private final long serialNumber; // serial number of the computer
     private static long serialNumberCounter = 1000000; // counter for the next computer's serial number
+    private static int count = 0; // the number of computers created
 
     // Constructor
     public Computer(String brand, String model, double price) {
@@ -14,6 +15,7 @@ public class Computer {
         this.price = price;
         serialNumber = serialNumberCounter;
         serialNumberCounter++;
+        count++;
     }
 
     // Getters
@@ -44,5 +46,20 @@ public class Computer {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    // String representation
+    @Override
+    public String toString() {
+        return "=== Computer Info ==="
+                + "\n\tBrand: " + brand
+                + "\n\tModel: " + model
+                + "\n\tSerial Number: " + serialNumber
+                + "\n\tPrice: " + "$" + price;
+    }
+
+    // Returns the total number of Computer objects created
+    public int findNumberOfCreatedComputers(){
+        return count;
     }
 }
