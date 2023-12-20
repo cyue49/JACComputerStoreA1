@@ -42,7 +42,7 @@ public class Main {
             // perform the appropriate menu action
             switch (choice){
                 case 1:
-                    System.out.println("choice 1");
+                    computerStore.enterNewComputers();
                     break;
                 case 2:
                     System.out.println("choice 2");

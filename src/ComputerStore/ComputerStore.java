@@ -35,14 +35,54 @@ public class ComputerStore {
     }
 
     // add new computers to computer store
-    public void addNewComputers(Computer c){
+    private void addNewComputers(Computer c){
         inventory.add(c);
         emptySlots--;
     }
 
-    // ask the user how many computers then want to add and add them if has enough space
+    // ask the user how many computers then want to add and add them if computer store has enough space
     public void enterNewComputers(){
         if (!checkPassword())   return; // ask user to enter the password, if incorrect return
+        Scanner kb = new Scanner(System.in);
+        int num = 0; // number of computers to be added to the store
+        while (true){
+            try{
+                System.out.println("Please input the number of computers you want to add: ");
+                String input = kb.nextLine();
+                num = Integer.parseInt(input);
+                if (num > emptySlots){ // if not enough empty slots to add the number of computers the user wants to add
+                    System.out.println("Action cannot be performed. There is only " + emptySlots + " empty slots available in the computer store. \nReturning to main menu.");
+                    return;
+                }
+                break;
+            }catch (Exception e){
+                System.out.println("An invalid input for the number of computers has been entered. Please make sure to enter an integer and try again.");
+            }
+        }
+
+        // valid input for number of computers, asking the user about the computer(s) to be added and add them
+        for (int i=0; i<num; i++){
+            System.out.println("For computer #" + i + ", please enter the following information:");
+            System.out.println("Brand name: ");
+            String brand = kb.nextLine();
+            System.out.println("Model: ");
+            String model = kb.nextLine();
+            System.out.println("Price: ");
+            double price = 0;
+            while (true){
+                try {
+                    String input = kb.nextLine();
+                    price = Double.parseDouble(input);
+                    break;
+                }catch (Exception e){
+                    System.out.println("Invalid input. Please try again: ");
+                }
+            }
+            addNewComputers(new Computer(brand,model,price));
+        }
+
+        System.out.println(num + " computer(s) have been added to the store.");
+
     }
 
     // change the information of an existing computer
